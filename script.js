@@ -15,24 +15,16 @@
   const PYROSTILI = 'pyrostili';
   const BALISTA_ACHINOS = 'balista achinos';
   
-      const OPT_BUCKLER = {
-        name:"add buckler (+1pts/model)",
-        cost:1,
-        upgradeWeapon:'',
-        upgradeArmour:'',
-        upgradeShield:SHIELD
+      const NIDO_HOSTIGADORES = {
+        name:"nido de hostigadores (+3pts/model)",
+        cost:3,
+        upgrade1:'',
+        upgrade2:'',
+        upgrade3:ESTRUCTURA
       };
       
       const characterOptions  =[
-        {name:'Upgrade to thrusting spear',cost:1,upgradeArmour:'',upgradeShield:'',upgradeWeapon:THRUSTING},
-        {name:'Upgrade to throwing spear',cost:1,upgradeArmour:'',upgradeShield:'',upgradeWeapon:THROWING},
-        {name:"Upgrade to Cavalry Spear(must be mounted)",cost:1,upgradeArmour:'',upgradeShield:'',upgradeWeapon:CAVALRY_SPEAR,requiresMounted:true},
-        {name:"Upgrade to Javelin",cost:2,upgradeArmour:'',upgradeShield:'',upgradeWeapon:JAVELIN},
-        {name:"Upgrade to Horse",cost:4,upgradeArmour:'',upgradeShield:'',upgradeWeapon:'',unlessMounted:true},
-        {name:"Downgrade to no armor",cost:-3,upgradeArmour:NO_ARMOUR,upgradeShield:'',upgradeWeapon:''},
-        {name:"Downgrade to partial armor",cost:-1,upgradeArmour:PARTIAL,upgradeShield:'',upgradeWeapon:''},
-        {name:"Downgrade to no shield",cost:-1,upgradeArmour:'',upgradeShield:NO_SHIELD,upgradeWeapon:''},
-        {name:"Upgrade to heavy shield",cost:1,upgradeArmour:'',upgradeShield:HEAVY_SHIELD,upgradeWeapon:'',unlessMounted:true},
+        {name:'nido de hostigadores',cost:3,upgrade1:'',upgrade2:'',upgrade3:ESTRUCTURA},
       ];
 Vue.component('toastr', {
   template:`
@@ -145,97 +137,6 @@ Vue.component('unit-row', {
         return total + this.row.options[selectedOption].cost;
       },0);
     },    
-    save: function() {
-      let save = 7;
-      const mods = {};      
-        mods[NO_ARMOUR]=0;
-        mods[NO_SHIELD]=0;
-        mods[FULL]=2;
-        mods[PARTIAL]=1;
-        mods[SHIELD]=1;
-        mods[HEAVY_SHIELD]=2;
-      let armour = this.row.upgradedArmour ? this.row.upgradedArmour : this.row.defaultBody;
-      let shield = this.row.upgradedShield ? this.row.upgradedShield : this.row.defaultShield;
-      if(armour){
-        save -= mods[armour];
-      }
-      if(shield){
-        save -= mods[shield];
-      }
-      return save;
-    }
-  },
-  methods:{    
-    removeOption: function(optionIndex){
-      let option = this.row.options[optionIndex];
-      if(option.upgradeWeapon){
-        this.row.upgradedWeapon = '';
-      }
-      if(option.upgradeArmour){
-        this.row.upgradedArmour = '';
-      }
-      if(option.upgradeShield){
-        this.row.upgradedShield = '';
-      }
-      this.row.selectedOptions.splice(this.row.selectedOptions.indexOf(optionIndex),1);
-      this.row.excludedOptions = this.generatExclusions(this.row);
-    },
-    addOption: function(){
-      let option = this.row.options[this.optionToAdd];
-      this.row.selectedOptions.push(this.optionToAdd);
-      if(option.upgradeWeapon){
-        this.row.upgradedWeapon = option.upgradeWeapon;
-      }
-      if(option.upgradeArmour){
-        this.row.upgradedArmour = option.upgradeArmour;
-      }
-      if(option.upgradeShield){
-        this.row.upgradedShield = option.upgradeShield;
-      } 
-      this.optionToAdd = -1;
-      this.row.excludedOptions = this.generatExclusions(this.row);
-    },
-    generatExclusions: function(row){
-      // loop through selected options
-      //   for each selected option, record if it mods armour,shield or weapon
-      let excludeWeaponOptions = false;
-      let excludeArmourOptions = false;
-      let excludeShieldOptions = false;
-      let exclusions = [];
-      let isMounted = false;
-      row.selectedOptions.forEach(key => {
-        if(row.options[key].upgradeArmour){
-          excludeArmourOptions = true;
-        }
-        if(row.options[key].upgradeWeapon){
-          excludeWeaponOptions = true;
-        }
-        if(row.options[key].upgradeShield){
-          excludeShieldOptions = true;
-        }
-        if(row.options[key].name == 'Upgrade to Horse'){
-          isMounted = true;
-        }
-      });
-      // loop through all options,
-      //   if that option has shield or armour or weapon and not allowed, then add it to excludedOptions
-      row.options.forEach((option,idx) => {
-        if(  (excludeShieldOptions && option.upgradeShield )
-          || (excludeWeaponOptions && option.upgradeWeapon )
-          || (excludeArmourOptions && option.upgradeArmour )
-          || (isMounted && option.unlessMounted)
-          || (!isMounted && option.requiresMounted)
-          ){
-            exclusions.push(idx);
-        }
-      });
-      return exclusions;
-    },
-    addFigure: function(idx){
-      this.row.size++;
-    },
-    removeFigure: function(idx){
-      this.row.size--;
     }
   },
   template: `
