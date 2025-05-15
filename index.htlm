@@ -813,9 +813,4 @@ new Vue({
       </div>
       <toastr v-bind:message="toastrMessage"></toastr>
     </div>
-
-    <h3>Actuamente</h3>
-  <ul>
-    <li>Básico</li>
-  </ul> 
 </body></html>
