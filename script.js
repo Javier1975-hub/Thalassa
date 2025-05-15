@@ -1,20 +1,20 @@
-    window.onload=function(){
-      const NIDO_HOSTIGADORES = 'nido de hostigadores';
-      const ICONO_SAGRADO = 'icono sagrado';
-      const PARAPETOS_ABORDAJE = 'parapetos abordaje';
-      const PERFILES_ACORAZADOS = 'perfiles acorazados';
-      const ARIETE_REFORZADO = 'ariete reforzado';
-      const CUBIERTA_PARAPETADA = 'cubierta parapetada';
-      const CUBIERTA_MANDO = 'cubierta mando';
-      const MAESTRO_KYBERNETES = 'maestro kybernetes';
-      const PYROSVESTIS = 'pirosvéstis';
-      const MAESTRO_TEKTON = 'maestro tekton';
-      const GRUA = 'grúa';
-      const ARTEMON = 'artemon';
-      const POLYBOLOS = 'polybolos';
-      const PYROSTILI = 'pyrostili';
-      const BALISTA_ACHINOS = 'balista achinos';
-
+ window.onload = function () {
+  const NIDO_HOSTIGADORES = 'nido de hostigadores';
+  const ICONO_SAGRADO = 'icono sagrado';
+  const PARAPETOS_ABORDAJE = 'parapetos abordaje';
+  const PERFILES_ACORAZADOS = 'perfiles acorazados';
+  const ARIETE_REFORZADO = 'ariete reforzado';
+  const CUBIERTA_PARAPETADA = 'cubierta parapetada';
+  const CUBIERTA_MANDO = 'cubierta mando';
+  const MAESTRO_KYBERNETES = 'maestro kybernetes';
+  const PYROSVESTIS = 'pirosvéstis';
+  const MAESTRO_TEKTON = 'maestro tekton';
+  const GRUA = 'grúa';
+  const ARTEMON = 'artemon';
+  const POLYBOLOS = 'polybolos';
+  const PYROSTILI = 'pyrostili';
+  const BALISTA_ACHINOS = 'balista achinos';
+  
       const OPT_BUCKLER = {
         name:"add buckler (+1pts/model)",
         cost:1,
