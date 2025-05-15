@@ -1,5 +1,3 @@
-<script type="text/javascript">//<![CDATA[
-
     window.onload=function(){
       const NIDO_HOSTIGADORES = 'nido de hostigadores';
       const ICONO_SAGRADO = 'icono sagrado';
@@ -553,9 +551,6 @@ new Vue({
   }
 })
     }   
-
-  //]]></script>
-
 </head>
 <body>
     <script src="https://unpkg.com/vue"></script>
