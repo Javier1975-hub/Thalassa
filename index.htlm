@@ -279,22 +279,22 @@ Vue.component('title-row', {
             Troop type 
           </div>
           <div class="unit-cell unit-cell-small">
-            ML
+            MOV.
           </div>
           <div class="unit-cell unit-cell-small">
-            SH 
+            MASA
           </div>
           <div class="unit-cell unit-cell-small">
-            GR
+            ESTRUC.
           </div>
           <div class="unit-cell unit-cell-small">
-            SV
+            C.FRONT.
           </div>
           <div class="unit-cell unit-cell-medium">
-            Weapon
+            C.LAT.
           </div>
           <div class="unit-cell unit-cell-medium">
-            Armour
+            C.POST.
           </div>
           <div class="unit-cell unit-cell-medium">
             Traits
@@ -537,15 +537,7 @@ Vue.component('header-section',{
         <option value="">Add a unit</option>
         <option v-for="(value, name) in lists[selectedNation]" :value="name" v-bind:key="name">
           {{ value.displayName }}
-        </option>
-      </select>
-    </div>
-    <div>Leaders: {{leadersCount}}</div>
-    <div>Civis: {{civisCount}}</div>
-    <div>Milites{{militesCount}}</div>
-    <div>Rare: {{rareCount}}</div>
-  </div>
-  `,
+   
   computed:{
     totalCost: function(){ 
     	return this.armyContents.reduce((total, unit) => {
@@ -555,41 +547,7 @@ Vue.component('header-section',{
       	return total + (unit.size * (unit.cost + optionsCost));
       }, 0);
     },
-    totalFiguresCount: function(){ 
-    	return this.armyContents.reduce((total, unit) => {
-      	return total + (unit.size );
-      }, 0);
-    },
-    leadersCount: function(){
-    	return this.armyContents.reduce((total, unit) => {
-      	return unit.availability == 'leader'
-          ? total + (unit.size )
-          :total;
-      }, 0);
-    },
-    civisCount: function(){
-    	return this.armyContents.reduce((total, unit) => {
-      	return unit.availability == 'civis'
-          ? total + (unit.size )
-          :total;
-      }, 0);
-    },
-    militesCount: function(){
-    	return this.armyContents.reduce((total, unit) => {
-      	return unit.availability == 'milites'
-          ? total + (unit.size )
-          :total;
-      }, 0);
-    },
-    rareCount: function(){
-    	return this.armyContents.reduce((total, unit) => {
-      	return unit.availability == 'rare'
-          ? total + (unit.size )
-          :total;
-      }, 0);
-    }
-  }
-})
+   
 
 new Vue({
   el: '#app',
