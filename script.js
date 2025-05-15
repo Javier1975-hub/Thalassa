@@ -550,9 +550,12 @@ new Vue({
     toastrTimeout:0
   }
 })
-    }   
+    } 
+</script>
 </head>
 <body>
-    <script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/vue">
+</script>
 </body>
 </html>
+}
