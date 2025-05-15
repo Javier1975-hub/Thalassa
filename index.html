@@ -266,7 +266,7 @@ Vue.component('sharable-link',{
           <h2>Share this list</h2>
           <span class="sharable-link" title="Click to copy sharable link">
             <input v-model="sharable" ref="sharableInput"  v-on:click="copyToClip" />
-            <i class="fa fa-link"  v-on:click="copyToClip"></i>
+            <i class="fa fa-link" v-on:click="copyToClip" aria-label="Copy sharable link"></i>
           </span>
         </div>
         `,
@@ -719,9 +719,7 @@ new Vue({
     toastrTimeout:0
   }
 })
-
-
-    }    
+    }   
 
   //]]></script>
 
