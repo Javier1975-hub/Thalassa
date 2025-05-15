@@ -165,66 +165,25 @@
   <script type="text/javascript">//<![CDATA[
 
     window.onload=function(){
-      const NO_SHIELD = 'no shield';
-      const NO_ARMOUR = 'no armour';
-      const FULL = 'full armour';
-      const PARTIAL = 'partial armour';
-      const SHIELD = 'shield';
-      const HEAVY_SHIELD = 'heavy shield';
-      const THROWING = 'throwing spear';
-      const THRUSTING = 'thrusting spear';
-      const CAVALRY_SPEAR = 'cavalry spear';
-      const LONG_SPEAR = 'long spear';
-      const JAVELIN = 'javelin';
-      const CAVALRY_JAVELIN = 'cavalry spear & javelin';
-      const SLING = 'sling';
-      const BOW = 'bow';
+      const NIDO_HOSTIGADORES = 'nido de hostigadores';
+      const ICONO_SAGRADO = 'icono sagrado';
+      const PARAPETOS_ABORDAJE = 'parapetos abordaje';
+      const PERFILES_ACORAZADOS = 'perfiles acorazados';
+      const ARIETE_REFORZADO = 'ariete reforzado';
+      const CUBIERTA_PARAPETADA = 'cubierta parapetada';
+      const CUBIERTA_MANDO = 'cubierta mando';
+      const MAESTRO_KYBERNETES = 'maestro kybernetes';
+      const PYROSVESTIS = 'pirosvéstis';
+      const MAESTRO_TEKTON = 'maestro tekton';
+      const GRUA = 'grúa';
+      const ARTEMON = 'artemon';
+      const POLYBOLOS = 'polybolos';
+      const PYROSTILI = 'pyrostili';
+      const BALISTA_ACHINOS = 'balista achinos';
 
       const OPT_BUCKLER = {
         name:"add buckler (+1pts/model)",
         cost:1,
-        upgradeWeapon:'',
-        upgradeArmour:'',
-        upgradeShield:SHIELD
-      };
-      const OPT_DOWN_NO_ARMOUR = {
-        name:"downgrade to no armour",
-        cost:-2,
-        upgradeWeapon:'',
-        upgradeArmour:NO_ARMOUR,
-        upgradeShield:''
-      };
-      const OPT_DOWN_PARTIAL_ARMOUR = {
-        name:"downgrade to partial armour",
-        cost:-1,
-        upgradeWeapon:'',
-        upgradeArmour:PARTIAL,
-        upgradeShield:''
-      };
-      const OPT_UP_PARTIAL_ARMOUR = {
-        name:"upgrade to partial armor (+2 pts/model)",
-        cost:2,
-        upgradeWeapon:'',
-        upgradeArmour:PARTIAL,
-        upgradeShield:''
-        };
-      const OPT_UP_FULL_ARMOUR = {
-        name:"upgrade to full armor (+1 pts/model)",
-        cost:1,
-        upgradeWeapon:'',
-        upgradeArmour:FULL,
-        upgradeShield:''
-        };
-      const OPT_UPGRADE_CAVALRY_JAVELIN = {
-        name:"upgrade to gain javelin and extra equipment javelin (+3 pts/model)",
-        cost:3,
-        upgradeWeapon:'javelin and extra equipment javelin',
-        upgradeArmour:'',
-        upgradeShield:''
-      };
-      const OPT_DOWN_HEAVY_SHIELD = {
-        name:"downgrade heavy shield to shield ( -1 pts)",
-        cost:-1,
         upgradeWeapon:'',
         upgradeArmour:'',
         upgradeShield:SHIELD
@@ -270,8 +229,8 @@ Vue.component('intro-screen',{
   ],  
   template:`
   <div>
-    <select id="armySelect" v-bind:value="selectedNation" class="add-unit" v-on:change="$emit('select-nation', $event.target.value)">
-      <option value="">Please select an army to start</option>
+    <select id="Selección de flota" v-bind:value="selectedNation" class="add-unit" v-on:change="$emit('select-nation', $event.target.value)">
+      <option value="">Elección de nación</option>
       <option v-for="(value, name) in lists" :value="name" v-bind:key="name">
       {{ name }}
       </option>
@@ -737,53 +696,53 @@ new Vue({
     }
   },
   data: {
-    title: 'Clashculator',
+    title: 'Thalassafleetcreator',
     lists: {
       Atenas: {
-        lvl5:{
-          isCharacter:true,
-          displayName:'Level V leader',
-          availability:'leader',
-          cost:155,
-          options:characterOptions,
-          combat:3,
-          ranged:5,
-          grit:3,
-          commandRange:10,
-          commandPoints:5,
-          defaultShield:HEAVY_SHIELD,
-          defaultBody:FULL,
-          traits:'attacks(3), wounds(3), Iron Will'
+        Trirreme:{
+          isship:true,
+          displayName:'Trirreme',
+          cost:75,
+          options:trirremeOptions,
+          movimiento:3,
+          masa:6(7),
+          estructura:3,
+          casco frontal:6,
+          casco lateral:6,
+          casco posterior: 6,
+          salvación del casco: 6+,
+          gobernabilidad:3,
+          traits:'ariete, slot de proa(1), slot de tripulación(3)'
         },
-        lvl4:{
-          isCharacter:true,
-          displayName:'Level IV leader',
-          availability:'leader',
-          cost:125,
-          options:characterOptions, 
-          combat:3,
-          ranged:5,
-          grit:3,
-          commandRange:10,
-          commandPoints:4,
-          defaultShield:HEAVY_SHIELD,
-          defaultBody:FULL,
-          traits:'attacks(2), wounds(3), Iron Will'
+        Pentecónter:{
+          isship:true,
+          displayName:'Penteconter',
+          cost:40,
+          options:penteconterOptions,
+          movimiento:3,
+          masa:3(4),
+          estructura:2,
+          casco frontal:5,
+          casco lateral:5,
+          casco posterior: 5,
+          salvación del casco: 7+,
+          gobernabilidad:2,
+          traits:'ariete, ligera, pequeño, slot de tripulación(1)'
         },
-        lvl3:{
-          isCharacter:true,
-          displayName:'Level III leader',
-          availability:'leader',
-          cost:95,
-          options:characterOptions,
-          combat:3,
-          ranged:5,
-          grit:3,
-          commandRange:8,
-          commandPoints:5,
-          defaultShield:HEAVY_SHIELD,
-          defaultBody:FULL,
-          traits:'attacks(2), wounds(2), Iron Will'
+        Barcaza de asedio:{
+          isship:true,
+          displayName:'Barcaza de asedio',
+          cost:30,
+          options:barcazaOptions,
+          movimiento:3,
+          masa:2,
+          estructura:3,
+          casco frontal:4,
+          casco lateral:4,
+          casco posterior: 4,
+          salvación del casco: 7+,
+          gobernabilidad:2,
+          traits:'pequeña, máquina de asedio, slot de proa(1) , slot de tripulación(1)'
         },
       }
     },
@@ -851,12 +810,8 @@ new Vue({
       <toastr v-bind:message="toastrMessage"></toastr>
     </div>
 
-    <h3>Still to come</h3>
+    <h3>Actuamente</h3>
   <ul>
-    <li>elephants</li>
-    <li>printer friendlier</li>
-    <li>mounted options bugs</li>
-    <li>break points</li>
-    <li>more armies, final lists</li>
+    <li>Básico</li>
   </ul> 
 </body></html>
